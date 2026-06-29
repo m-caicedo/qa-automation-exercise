@@ -13,7 +13,6 @@
     "report": "allure generate allure-results -o allure-report --clean",
     "report:open": "allure open allure-report",
     "report:serve": "allure serve allure-results"
-
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,7 @@
   "keywords": [],
   "author": "miguel angel caicedo",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/m-caicedo/qa-automation-exercise/issues"
   },
@@ -32,7 +31,7 @@
     "@cucumber/pretty-formatter": "^4.0.0",
     "@faker-js/faker": "^10.5.0",
     "@playwright/test": "^1.61.0",
-    "@types/node": "^25.9.3",
+    "@types/node": "^25.9.4",
     "@types/pg": "^8.20.0",
     "allure-commandline": "^2.42.1",
     "allure-playwright": "^3.10.0",
@@ -41,6 +40,7 @@
     "zod": "^4.4.3"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "pg": "^8.22.0"
   }
 }

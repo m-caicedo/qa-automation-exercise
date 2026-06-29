@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import { AllureReporter } from 'allure-playwright';
+import dotenv from 'dotenv';
+
+dotenv.config({path: 'env/.env'});
 
 /**
  * Read environment variables from file.
@@ -20,16 +24,21 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 4 : 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [["allure-playwright"],["html", {outputFolder: "playwright-report", open: "never"}], ["list"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: process.env.URL,
 
+    // Simula un navegador Chrome real en Windows
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -54,10 +63,10 @@ export default defineConfig({
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
     // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+     {
+       name: 'Mobile Safari',
+       use: { ...devices['iPhone 12'] },
+     },
 
     /* Test against branded browsers. */
     // {
