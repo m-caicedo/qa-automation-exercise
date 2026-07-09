@@ -84,5 +84,17 @@ test.describe("@regression Autenticación — Registro", () => {
     await signupPage.continueAfterAccountCreation();
     await loginPage.verifyLoginSuccess();
   });
+
+  test("TC-005 Registro con email existente — mensaje de error visible", async ({ page }) => {
+    /**
+     * Verifica que el sistema impida registrar una cuenta
+     * usando un correo electrónico que ya existe.
+     */
+    const loginPage = new LoginPage(page);
+ 
+    await loginPage.goto();
+    await loginPage.startSignup("TestUser01", process.env.EMAIL!);
+    await loginPage.verifySignupEmailExistsError();
+  });
 });
 
