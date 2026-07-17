@@ -2,7 +2,6 @@
 
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
-![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?logo=cucumber&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Allure](https://img.shields.io/badge/Allure-EE5A24)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
@@ -19,7 +18,6 @@ El proyecto utiliza Automation Exercise como aplicación bajo prueba (SUT) y tie
 
 - UI Automation
 - API Testing
-- BDD
 - CI/CD
 - Docker
 - Reporting
@@ -43,10 +41,6 @@ tests/
  ├── api/
  └── e2e/
 
-bdd/
- ├── features/
- └── steps/
-
 docs/
 docker/
 
@@ -59,7 +53,6 @@ docker/
 
 - Playwright
 - TypeScript
-- Cucumber
 - Faker
 - PostgreSQL
 - Zod
@@ -148,14 +141,6 @@ npm run test:api
 
 ---
 
-## Ejecutar BDD
-
-```bash
-npm run test:bdd
-```
-
----
-
 # 📊 Reportes
 
 Generar reporte Allure
@@ -215,8 +200,6 @@ Automation Exercise API
 ✅ Data Factory
 
 ✅ Environment Configuration
-
-✅ BDD
 
 ✅ Parallel Execution
 
