@@ -1,13 +1,5 @@
 name: CI
 
-# T-12 del checklist de Sprint 0 (docs/TEST_PLAN.md §6).
-# Gate automático en cada PR con la suite @smoke (rápida). La suite
-# @regression completa corre cuando un PR se mergea a main (evento
-# pull_request "closed" con merged=true — no depende de un push directo)
-# y además de forma nocturna vía schedule, como red de seguridad.
-# Ambas suites publican el reporte de Allure y el HTML de Playwright como
-# artefactos, con screenshots/video/trace de los tests que fallaron.
-
 on:
   pull_request:
     branches: [main]
@@ -81,9 +73,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # El evento pull_request "closed" no apunta a main por defecto;
-          # lo fijamos explícitamente para validar el código ya mergeado
-          # (en schedule/workflow_dispatch, main también es lo correcto).
           ref: main
 
       - name: Setup Node.js
